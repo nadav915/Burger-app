@@ -11,7 +11,7 @@ const controls=[
 
 const buildControls = (props)=> (
     <div className={classes.BuildControls}>
-        <p>The price is: {props.price.toFixed(2)}$</p> 
+        <p>The price is: {props.price.toFixed(2)}{props.symbol}</p> 
         {controls.map(control=>{
             if(props.isKosher&&(control.type==='bacon'||control.type==='cheese')){
                 return;
