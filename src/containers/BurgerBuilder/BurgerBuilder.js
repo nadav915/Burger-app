@@ -58,7 +58,7 @@ class BurgerBuilder extends Component{
 
         });
     }
-
+    //check if sum is not 0
     updatePurchase = (ingredients) =>{
         const sum = Object.keys(ingredients).map(igKey=>{
             return ingredients[igKey];
@@ -101,12 +101,14 @@ class BurgerBuilder extends Component{
     }
 
     render(){
+        //disable "Less" button if where is no ingredient
         const disabledInfo = {...this.state.ingredients};
         for(let key in disabledInfo)
         {
             disabledInfo[key]  = disabledInfo[key] <=0;
         }
         let orderSummary =null;
+        //show error if ingredient cant be loaded
         let burger =this.state.error ? <p>ingredients can't be loaded</p> : <Spinner />;
         if(this.state.ingredients){
             burger =  (
