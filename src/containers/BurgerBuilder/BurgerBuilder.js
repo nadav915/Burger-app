@@ -52,7 +52,7 @@ class BurgerBuilder extends Component{
             const users = {countryCode:response.data.countryCode,currencies:{},exchangeRate:1};
             this.setState({user:users})
         }).then(()=>{
-            axios.get('https://restcountries.eu/rest/v2/alpha'+'/'+this.state.user.countryCode)
+            axios.get('https://restcountries.eu/rest/v2/alpha/'+this.state.user.countryCode)
         .then(response=>{
         const user = {...this.state.user};
         console.log(response.data);
@@ -154,7 +154,7 @@ class BurgerBuilder extends Component{
     }
 
     render(){
-        //disable "Less" button if where is no ingredient
+        //disable "Less" button if there is no ingredient
         const disabledInfo = {...this.state.ingredients};
         for(let key in disabledInfo)
         {
@@ -168,13 +168,13 @@ class BurgerBuilder extends Component{
                 <React.Fragment>
                 <Burger ingredients={this.state.ingredients}/>
                 <BuildControls 
-                 price={this.state.totalPrice}
-                 symbol={this.state.user.currencies.symbol} 
+                price={this.state.totalPrice}
+                symbol={this.state.user.currencies.symbol} 
                 isKosher={this.state.isKosher} 
                 kosher={this.kosherHandler} 
                 more={this.moreHandler} 
                 less={this.lessHandler} 
-                 disabled={disabledInfo}
+                disabled={disabledInfo}
                 purchaseable={this.state.purchaseable}
                 orderd={this.purchaseHandler}/>
                 </React.Fragment>
